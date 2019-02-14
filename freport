@@ -3,7 +3,7 @@ read f1;
 read f2;
 if cmp -s $f1 $f2;
 then
-	tac geefile > revfile
+	tac geefile | rev > revfile
 else
 	> revfile
 	tr a-z A-Z < geekfile >>revfile
