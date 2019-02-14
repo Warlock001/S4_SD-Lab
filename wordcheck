@@ -1,0 +1,2 @@
+$cat > geekfile.txt
+$grep -i "UNix" geekfile.txt

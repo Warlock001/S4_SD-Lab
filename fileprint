@@ -1,0 +1,6 @@
+echo "Enter the filename to find:"
+read fname
+echo "Enter starting line and ending line:"
+read a
+read b
+head -n $a $fname | tail -n $b
