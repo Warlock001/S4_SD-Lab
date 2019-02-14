@@ -1,6 +1,0 @@
-echo "Enter file for computation"
-read f1;
-a="$(grep -c ^ $f1)"
-echo "Number of lines : $a";
-words=`cat $f1`
-set -- $input
