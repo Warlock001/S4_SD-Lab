@@ -1,0 +1,9 @@
+#multiplication table of given number
+echo "Enter a number"
+read n
+i=1
+while [ $i -le 10 ]
+do
+	echo "$i * $n = `expr $n \* $i`"
+	i=`expr $i + 1`
+done
