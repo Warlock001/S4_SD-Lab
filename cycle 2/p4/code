@@ -1,0 +1,12 @@
+#if two files are equal , reverse second file , else change case of first file , all output to a new file
+
+echo "Enter file names to perform computation"
+read f1;
+read f2;
+if cmp -s $f1 $f2;
+then
+	tac file2 | rev > output
+else
+	> output
+	tr a-z A-Z < file1 >>output
+fi

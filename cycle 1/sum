@@ -1,0 +1,9 @@
+
+#simple sum of two numbers
+
+echo $SHELL
+echo $1
+echo $2
+sum=($1+$2)
+echo sum
+

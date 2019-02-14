@@ -1,0 +1,10 @@
+# change case of searched word inside sample file to uppercase
+
+echo "enter word to replace"
+read word
+a=$(<'geekfile')
+b=$word;
+a=${a//$b/${b^^}}
+echo $a > geekfile
+echo "File is updated"
+echo $a

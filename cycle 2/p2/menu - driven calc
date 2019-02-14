@@ -1,0 +1,15 @@
+echo "Enter two numbers:"
+read a
+read b
+echo "Enter your selection";
+echo "1.Addition";
+echo "2.Subtraction";
+echo "3.Multiplication";
+echo "4.Division";
+read ch
+case $ch in
+1)echo "Addition >> $a + $b = `expr $a + $b | bc` ";;
+2)echo "Subtraction >> $a - $b = `expr $a - $b | bc` ";;
+3)echo "Multiplication >> $a * $b = `expr $a \* $b | bc` ";;
+4)echo "Division >> $a / $b = `expr "scale=2; $a / $b" | bc` ";;
+esac
