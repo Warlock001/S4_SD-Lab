@@ -2,5 +2,14 @@ echo "Enter file for computation"
 read f1;
 a="$(grep -c ^ $f1)"
 echo "Number of lines : $a";
-words=`cat $f1`
-set -- $input
+#words=`cat $f1`
+cnew_line=`echo -e "\n"`
+num_line=0
+while read f1 char
+do
+if [ "$char" = "$cnew_line" ]
+then
+(( num_line++ ))
+fi
+echo "wordcount = $numline"
+
