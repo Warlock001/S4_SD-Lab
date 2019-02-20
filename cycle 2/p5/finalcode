@@ -1,0 +1,39 @@
+read f1;
+filename="$f1"
+w_count=-1
+char_count=-1
+
+while read -n1 char
+do
+
+	if [[ "$char" =~ [a-z] ]]
+	then
+		(( lcase++ ))
+	fi
+
+	if [[ "$char" =~ [A-Z] ]]
+	then
+		(( upcase++ ))
+	fi
+
+	if [[ "$char" =~ [0-9] ]]
+	then
+		(( num++ ))
+	fi
+
+	if [ "$char" = "$cnew_line" ]
+	then
+		(( w_count++ ))
+	fi
+
+(( char_count=$((char_count+1)) ))
+
+done < "$filename"
+l_count="$(grep -c ^ $filename)"
+
+echo "Line Count = $l_count
+Word Count = $w_count
+Character Count = $char_count
+Lower case = $lcase
+Upper case = $upcase
+Digit Count = $num";

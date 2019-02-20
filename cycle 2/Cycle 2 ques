@@ -5,3 +5,8 @@
 5. 	read a file
 	number of lines words characters
 	characters out alpahabet digits count
+	number of uppercase characters
+	number of lowercase characters
+	number of digits
+
+	count ( lines , words , characters , UC characters , LC characters , digits ) 

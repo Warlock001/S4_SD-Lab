@@ -1,0 +1,42 @@
+
+
+
+cnew_line=`echo -e "\n"`
+cspace=`echo -e " "`
+
+if [ $# -eq 0 ]
+then
+
+echo "You didn't entered a filename as a parameter"
+exit
+
+elif [ $# -eq 1 ]
+then
+filename="$1"
+
+num_line=0
+num_word=0
+num_char=0
+
+while read -n1 char
+do
+if [ "$char" = "$cnew_line" ]
+then
+(( num_line++ ))
+
+elif [ "$char" = "$cspace" ]
+then
+(( num_word++ ))
+
+else
+(( num_char++ ))
+
+fi
+
+done < "$filename"
+
+echo "Word Count = $num_line
+Word Number = $num_word
+Character Number =$num_char"
+
+fi
