@@ -1,0 +1,11 @@
+tail -n+2 studdata.csv | cut --delimiter=, -f4-10 > sorteddata
+readarray -t studname < <(cut -d, -f3 studdata.csv)
+printf '%s\n' "${studname[0]}"
+sum_stud=( $(awk -F, '{sum=0; for (i=1; i<=NF; i++) {sum+= $i} print sum}' sorteddata) )
+printf '%s\n' "${sum_stud[0]}"
+#sum_stud_length=${#my_array[@]}
+#echo "$sum_stud_length";
+
+
+
+

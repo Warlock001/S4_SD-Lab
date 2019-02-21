@@ -1,0 +1,16 @@
+text file
+10 column
+roll no , admission no , name , sub1 .. sub 7
+ minimum 15 data
+ enter data
+ text file read
+ total subjects , mean, standard deviation 
+ 
+ mean + 2 sigma A
+ mean + sigma B
+ mean C
+ mean minus sigma D
+ mean minus 2 sigma E
+ failed
+ 
+develop histogram
