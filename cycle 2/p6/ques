@@ -4,7 +4,7 @@ roll no , admission no , name , sub1 .. sub 7
  minimum 15 data
  enter data
  text file read
- total subjects , mean, standard deviation 
+ total subjects , mean = sum / total number of students, standard deviation 
  
  mean + 2 sigma A
  mean + sigma B
