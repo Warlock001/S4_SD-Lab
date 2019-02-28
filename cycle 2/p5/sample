@@ -1,4 +1,71 @@
-alfin alfin alfin alfin alfin
-alfin alfin alfin alfin alfin
-ALFIN ALFIN ALFIN ALFIN ALFIN
-12345 12345 12345 12345 12345 12345
+i=0
+#to find total
+while IFS=","  read rno adm name m1 m2 m3 m4 m5 m6 m7 
+do
+
+	tot=$((m1+m2+m3+m4+m5+m6+m7))
+	total=$(($total + $tot))
+	echo "total of" $name "is" $tot
+	i=$(($i+1))
+done < studrec
+
+echo "total of all students" $total
+n=$i
+
+#to find mean
+mean=$(($total/$n)) #sum of all students by total no of students
+echo "mean is" $mean
+
+#to find sd
+while IFS=","  read rno adm name m1 m2 m3 m4 m5 m6 m7; do
+	tot=$((m1+m2+m3+m4+m5+m6+m7))
+	sq=$(($sq+(($tot-$mean)*($tot-$mean))))
+	echo "sq =" $sq
+done < studrec
+v=$(($sq/$n))
+sd=$(bc <<< "scale=0; sqrt($v)")
+echo "varience" $v
+echo "sd" $sd
+
+#to calculate grade
+a=$(($mean+(2*$sd)))
+echo "mean+2sd" $a
+b=$(($mean+$sd))
+echo "mean+sd" $b
+c=$mean
+echo "mean"$c
+d=$(($mean-$sd))
+echo "mean-sd" $d
+e=$(($mean-(2*$sd)))
+echo "mean-2sd" $e
+
+while IFS=","  read rno adm name m1 m2 m3 m4 m5 m6 m7; do
+	tot=$((m1+m2+m3+m4+m5+m6+m7))
+	if [ $tot -gt $a ];then
+	grade="A" echo $name"|==========A"
+	g[0]=$((${g[0]}+1))
+	elif [[ $tot -le $a && $tot -gt $b ]];then
+	grade="B" echo $forname"|========B"
+	g[1]=$((${g[1]}+1))
+	elif [[ $tot -le $b && $tot -gt $c ]];then
+	grade="C" echo $name"|======C"
+	g[2]=$((${g[2]}+1))
+	elif [[ $tot -le $c && $tot -gt $d ]];then
+	grade="D" echo $name"|====D"
+	g[3]=$((${g[3]}+1))
+	elif [[ $tot -le $d && $tot -gt $e ]];then
+	grade="E" echo $name"|==E"
+	g[4]=$((${g[4]}+1))
+	else 
+	grade="F" echo $name"|=F"
+	gf=$(($gf+1))
+	fi
+	
+done < studrec
+echo "   _________________"
+echo "    F E D C B A"
+echo ${g[*]}
+for((i=0;i<n;i++))
+{
+if
+}

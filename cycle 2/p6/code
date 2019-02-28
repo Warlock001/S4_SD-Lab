@@ -9,3 +9,31 @@ mean_stud=("${sum_stud[@]}")
 totalsum="$(($(printf '%s + ' "${sum_stud[@]}" )0))"
 mean=$((totalsum/14))
 #echo "$mean"
+for i in "${sum_stud[@]}"
+do
+	sq=$(($sq+(($sum_stud-$mean)*($sum_stud-$mean))))
+done
+v=$(($sq/14))
+sd=$(bc <<< "scale=0; sqrt($v)")
+echo "varience" $v
+echo "sd" $sd
+
+a=$(($mean+(2*$sd)))
+echo "mean+2sd" $a
+b=$(($mean+$sd))
+echo "mean+sd" $b
+c=$mean
+echo "mean"$c
+d=$(($mean-$sd))
+echo "mean-sd" $d
+e=$(($mean-(2*$sd)))
+echo "mean-2sd" $e
+
+for i in "${stud_name[@]}"
+do
+	echo "Grade of $stud_name is"
+	for i in "${sum_stud[@]}"
+	do
+		
+
+
