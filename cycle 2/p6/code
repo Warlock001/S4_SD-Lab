@@ -1,39 +1,54 @@
-tail -n+2 studdata.csv | cut --delimiter=, -f4-10 > sorteddata
-readarray -t studname < <(cut -d, -f3 studdata.csv)
-#printf '%s\n' "${studname[0]}"
+tail -n+2 samplefinal.csv | cut --delimiter=, -f4-10 > sorteddata
+readarray -t studname < <(cut -d, -f3 samplefinal.csv)
+printf '%s\n' "${studname[1]}"
 sum_stud=( $(awk -F, '{sum=0; for (i=1; i<=NF; i++) {sum+= $i} print sum}' sorteddata) )
-#printf '%s\n' "${sum_stud[0]}"
+printf '%s\n' "${sum_stud[0]}"
 sum_stud_length=${#sum_stud[@]}
-#echo "$sum_stud_length";
+echo "$sum_stud_length";
 mean_stud=("${sum_stud[@]}")
 totalsum="$(($(printf '%s + ' "${sum_stud[@]}" )0))"
 mean=$((totalsum/14))
-#echo "$mean"
+echo "$mean"
 for i in "${sum_stud[@]}"
 do
 	sq=$(($sq+(($sum_stud-$mean)*($sum_stud-$mean))))
 done
 v=$(($sq/14))
 sd=$(bc <<< "scale=0; sqrt($v)")
-echo "varience" $v
-echo "sd" $sd
-
+#echo "Varience:" $v
+#echo "Standard Deviation:" $sd
+: '
 a=$(($mean+(2*$sd)))
-echo "mean+2sd" $a
+ "mean+2sd" $a
 b=$(($mean+$sd))
-echo "mean+sd" $b
+ "mean+sd" $b
 c=$mean
-echo "mean"$c
+"mean"$c
 d=$(($mean-$sd))
-echo "mean-sd" $d
+"mean-sd" $d
 e=$(($mean-(2*$sd)))
-echo "mean-2sd" $e
-
-for i in "${stud_name[@]}"
+"mean-2sd" $e
+$sum_stud[*]
+for i in ${sum_stud[@]}
 do
-	echo "Grade of $stud_name is"
-	for i in "${sum_stud[@]}"
-	do
-		
-
-
+	"test" 
+	if [ $sum_stud -gt $a ] 
+	then
+	 "Grade=A"
+	elif [[ ( $sum_stud -le $a ) && ( $sum_stud -gt $b ) ]] 
+	then
+	"grade=B" 
+	elif [[ ( $sum_stud -le $b ) && ( $sum_stud -gt $c ) ]] 
+	then
+	"grade=C" 
+	elif [[ ( $sum_stud -le $c ) && ( $sum_stud -gt $d ) ]] 
+	then
+	"grade=D" 
+	elif [[ ( $sum_stud -le $d ) && ( $sum_stud -gt $e ) ]] 
+	then
+	"grade=E" 
+	else 
+	"grade=F"
+	fi
+done
+'

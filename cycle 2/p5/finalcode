@@ -1,6 +1,6 @@
 read f1;
 filename="$f1"
-w_count=-1
+w_count=1
 char_count=-1
 
 while read -n1 char
