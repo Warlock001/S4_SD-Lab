@@ -1,0 +1,129 @@
+I=0
+total=0
+mean=0
+mark=()
+variance=0
+while read p line; do
+	for i in {3..9}
+	do	
+		z=$(echo $line| cut -d' ' -f "$i")
+		l=$((l + z))
+	done
+
+	mark+=("$l")
+	total=$((total + l))
+	l=0
+
+	if [[ $p -ne 0 ]]
+	then
+	mean=$((total / p))
+	echo "$mean for $p"
+	fi
+done < data.csv
+
+for i in {1..28}
+	do
+		csd=$((mark["$i"] - mean))
+		csd=$((csd * csd))
+		variance=$((variance + csd))
+	done
+
+variance=$((variance / 28))
+echo "variance = $variance"
+sd=$(bc <<< "scale=0; sqrt($variance)")
+echo "SD = $sd"
+
+a=$((mean + ((2 * sd))))
+b=$((mean + sd))
+c=$((mean))
+d=$((mean - sd))
+e=$((mean - ((2 * sd))))
+echo "$a $b $c $d $e"
+
+A=0
+B=0
+C=0
+D=0
+E=0
+F=0
+for i in {1..28}
+	do
+		if [[ ${mark["$i"]} -ge $a ]]
+		then
+		echo "Grade A for $i student"
+		A=$((A+1))
+		elif [[ ${mark["$i"]} -ge $b ]]
+		then
+		echo "Grade B for $i student"
+		B=$((B+1))
+		elif [[ ${mark["$i"]} -ge $c ]]
+		then
+		echo "Grade C for $i student"
+		C=$((C+1))
+		elif [[ ${mark["$i"]} -ge $d ]]
+		then
+		echo "Grade D for $i student"
+		D=$((D+1))
+		elif [[ ${mark["$i"]} -ge $e ]]
+		then
+		echo "Grade E for $i student"
+		E=$((E+1))
+		else
+		F=$((F+1))
+		fi
+	done
+
+echo -n "A : "
+
+for ((i=1; i<=A; i++));
+do
+   echo -n " *"
+done
+
+echo ""
+
+
+echo -n "B : "
+
+for ((i=1; i<=B; i++));
+do
+   echo -n " *"
+done
+
+echo ""
+
+echo -n "C : "
+
+for ((i=1; i<=C; i++));
+do
+   echo -n " *"
+done
+
+echo ""
+
+echo -n "D : "
+
+for ((i=1; i<=D; i++));
+do
+   echo -n " *"
+done
+
+echo ""
+
+echo -n "E : "
+
+for ((i=1; i<=E; i++));
+do
+   echo -n " *"
+done
+
+echo ""
+
+echo -n "F : "
+
+for ((i=1; i<=F; i++));
+do
+   echo -n " *"
+done
+
+echo ""
