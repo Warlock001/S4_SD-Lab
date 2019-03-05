@@ -1,0 +1,4 @@
+readarray -t s1stud < <(cut -d, -f1 s1.csv)
+readarray -t s3stud < <(cut -d, -f1 s3.csv)
+readarray -t s5stud < <(cut -d, -f1 s5.csv)
+#echo "${s1stud[*]}"
