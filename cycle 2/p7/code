@@ -4,19 +4,29 @@ readarray -t s5stud < <(cut -d, -f1 s5.csv)
 declare -A clsone
 declare -A clstwo
 declare -A clsthree
+clsonetot=69;
+clstwotot=27;
+clsthreetot=78;
 
-for i in {1..240}
+for i in {1..40}
 do
 	if [[ $(($i%2)) -eq 0 ]]
 	then
-		clsone[i]=$s2stud[i]
-		s2finalstud=i;
+		while [ ${s2stud[i]} -gt clsonetot ]
+		do
+			clsone[i]=${s2stud[i]}
+			s2finalstud=i;
+		done
 	fi
-	clsone[i]=$s1stud[i]
-s1finalstud=j;
+	while [ ${s1stud[i]} -gt clstwotot ]
+	do
+		clsone[i]=${s1stud[i]}
+		s1finalstud=j;
+	done
 done
 
-for i in {1..40}
+: '
+	for i in {1..40}
 do
 	if[[ $(($i%2)) -eq 0  ]]
 	then
@@ -31,3 +41,4 @@ for i in {1..40}
 do
 	if[[ $(($i%2)) -eq 0 ]]
 	then
+'

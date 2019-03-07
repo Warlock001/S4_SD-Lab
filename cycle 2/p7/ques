@@ -1,16 +1,16 @@
-write a shell script to prepare the room allotement , seating arrangement , absentice statement, provision to mark absentice and generate collection slip. 
-The input files are roll list of three classes in excel format,
+write a shell script to prepare the room allotement , seating arrangement , #absentice statement, #provision to mark absentice and #generate collection slip. 
+The input files are roll list of three classes in excel format / csv format
 roomlist which has details on the capacity and layout.
 
 roll list have class , roll no , name
 
-room - capacity 60 , layout type 1. (one bench three people) (better matrix)
+room - capacity 60 , #layout type 1. #(one bench three people) (better matrix)
 
-two type of layout.
+#two type of layout.
 
 output room allotement which roll no in which class - seating arrangment
 
-absentice sheet
+#absentice sheet
 
 6 room
 1 room 40 seats
