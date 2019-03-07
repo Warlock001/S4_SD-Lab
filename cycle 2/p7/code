@@ -1,4 +1,33 @@
 readarray -t s1stud < <(cut -d, -f1 s1.csv)
 readarray -t s3stud < <(cut -d, -f1 s3.csv)
 readarray -t s5stud < <(cut -d, -f1 s5.csv)
-#echo "${s1stud[*]}"
+declare -A clsone
+declare -A clstwo
+declare -A clsthree
+
+for i in {1..240}
+do
+	if [[ $(($i%2)) -eq 0 ]]
+	then
+		clsone[i]=$s2stud[i]
+		s2finalstud=i;
+	fi
+	clsone[i]=$s1stud[i]
+s1finalstud=j;
+done
+
+for i in {1..40}
+do
+	if[[ $(($i%2)) -eq 0  ]]
+	then
+		clstwo[i]=$s2stud[s2finalstud]
+		s2finalstud++;
+	fi
+	clstwo[i]=$s1stud[s1finalstud]
+	s1finalstud++;
+done
+
+for i in {1..40}
+do
+	if[[ $(($i%2)) -eq 0 ]]
+	then
