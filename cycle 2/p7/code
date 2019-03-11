@@ -1,16 +1,17 @@
 readarray -t s1stud < <(cut -d, -f1 s1.csv)
 readarray -t s3stud < <(cut -d, -f1 s3.csv)
 readarray -t s5stud < <(cut -d, -f1 s5.csv)
-read -p "Enter total number of rooms: " n
-read -p "Enter number of seats in one room: " seats
-s1stud=${#s1stud[@]}; 
-s3stud=${#s3stud[@]}; 
-s5stud=${#s5stud[@]};
-echo "Total Students [ S1 ]:" $s1stud
-echo "Total Students [ S3 ]:" $s3stud
-echo "Total Students [ S5 ]:" $s5stud
+read -p "Total rooms: " n
+read -p "Seats in one room: " seats
+s1tot=${#s1stud[@]} 
+s3tot=${#s3stud[@]}
+s5tot=${#s5stud[@]}
+echo "Total Students [ S1 ]: " $s1tot
+echo "Total Students [ S3 ]: " $s3tot
+echo "Total Students [ S5 ]: " $s5tot
 for((i=1;i<=n;i++))
 do
+	echo "  "
 	echo "Room NO : " $i
 	for((j=1;j<=seats;j++))
 	do
@@ -79,5 +80,5 @@ do
 		fi
 	done
 	echo ${st[@]}
-	st()
+	st=()
 done	
