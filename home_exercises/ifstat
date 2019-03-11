@@ -1,0 +1,8 @@
+#!/bin/bash
+
+MYNUM=100
+
+if [ $MYNUM -eq 100 ]
+then
+	echo "condition true"
+fi
