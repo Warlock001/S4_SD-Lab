@@ -1,44 +1,83 @@
 readarray -t s1stud < <(cut -d, -f1 s1.csv)
 readarray -t s3stud < <(cut -d, -f1 s3.csv)
 readarray -t s5stud < <(cut -d, -f1 s5.csv)
-declare -A clsone
-declare -A clstwo
-declare -A clsthree
-clsonetot=69;
-clstwotot=27;
-clsthreetot=78;
-
-for i in {1..40}
+read -p "Enter total number of rooms: " n
+read -p "Enter number of seats in one room: " seats
+s1stud=${#s1stud[@]}; 
+s3stud=${#s3stud[@]}; 
+s5stud=${#s5stud[@]};
+echo "Total Students [ S1 ]:" $s1stud
+echo "Total Students [ S3 ]:" $s3stud
+echo "Total Students [ S5 ]:" $s5stud
+for((i=1;i<=n;i++))
 do
-	if [[ $(($i%2)) -eq 0 ]]
-	then
-		while [ ${s2stud[i]} -gt clsonetot ]
-		do
-			clsone[i]=${s2stud[i]}
-			s2finalstud=i;
-		done
-	fi
-	while [ ${s1stud[i]} -gt clstwotot ]
+	echo "Room NO : " $i
+	for((j=1;j<=seats;j++))
 	do
-		clsone[i]=${s1stud[i]}
-		s1finalstud=j;
+		if [[ ( $i -eq 1 ) || ( $i -eq 4 ) ]]
+		then
+			if [[ $(($j%2)) -eq 0 ]]
+			then
+				st[$z]=${s1stud[$l]}
+				((l++))
+				((z++))
+			else
+				st[$z]=${s3stud[$m]}
+				((m++))
+				((z++))
+			fi
+
+		elif [[ ( $i -eq 2 ) || ( $i -eq 5 ) ]]
+		then
+			if [[ $(($j%2)) -eq 0 ]]
+			then
+				if [[ ${s5stud[$p]} -eq 0 ]]
+				then
+					st[$z]=0
+					((z++))
+				else
+					st[$z]=${s5stud[$p]}
+					((p++))
+					((z++))
+				fi
+			else
+				if [[ ${s1stud[$l]} -eq 0 ]]
+				then
+					st[$z]=0
+					((z++))
+				else
+					st[$z]=${s1stud[$l]}
+					((l++))
+					((z++))
+				fi
+			fi
+		
+		elif [[ ( $i -eq 3 ) || ( $i -eq 6 ) ]]
+		then
+			if [[ $(($j%2)) -eq 0 ]]
+			then
+				if [[ ${s3stud[$m]} -eq 0 ]]
+				then
+					st[$z]=0
+					((z++))
+				else
+					st[$z]=${s3stud[$m]}
+					((m++))
+					((z++))
+				fi
+			else
+				if [[ ${s3stud[$p]} -eq 0 ]]
+				then
+					st[$z]=0
+					((z++))
+				else
+					st[$z]=${s5stud[$p]}
+					((p++))
+					((z++))
+				fi
+			fi
+		fi
 	done
-done
-
-: '
-	for i in {1..40}
-do
-	if[[ $(($i%2)) -eq 0  ]]
-	then
-		clstwo[i]=$s2stud[s2finalstud]
-		s2finalstud++;
-	fi
-	clstwo[i]=$s1stud[s1finalstud]
-	s1finalstud++;
-done
-
-for i in {1..40}
-do
-	if[[ $(($i%2)) -eq 0 ]]
-	then
-'
+	echo ${st[@]}
+	st()
+done	
