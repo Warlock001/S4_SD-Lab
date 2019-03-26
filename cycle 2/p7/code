@@ -1,8 +1,10 @@
 readarray -t s1stud < <(cut -d, -f1 s1.csv)
 readarray -t s3stud < <(cut -d, -f1 s3.csv)
 readarray -t s5stud < <(cut -d, -f1 s5.csv)
-read -p "Total rooms: " n
-read -p "Seats in one room: " seats
+#read -p "Total rooms: " n
+#read -p "Seats in one room: " seats
+n=6;
+seats=40;
 s1tot=${#s1stud[@]} 
 s3tot=${#s3stud[@]}
 s5tot=${#s5stud[@]}
@@ -67,7 +69,7 @@ do
 					((z++))
 				fi
 			else
-				if [[ ${s3stud[$p]} -eq 0 ]]
+				if [[ ${s5stud[$p]} -eq 0 ]]
 				then
 					st[$z]=0
 					((z++))

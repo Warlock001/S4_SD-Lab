@@ -18,3 +18,14 @@ output room allotement which roll no in which class - seating arrangment
 odd place one batch even place another batch
 69 , 72 , 78
 total 240
+
+
+for((k=0;k<40;k++))
+	do
+ 		if [[ $(($k%3)) -eq 0 ]]
+ 		then
+ 			printf "\n"
+ 		fi
+ 		echo ${st[k]}
+	done
+	k=0
