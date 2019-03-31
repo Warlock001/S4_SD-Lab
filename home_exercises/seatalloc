@@ -1,0 +1,9 @@
+echo " <<<SEAT MANAGEMENT>>> "
+echo " "
+read -p	 " No. of Batches attending exam? " b
+for((i=0;i<b;i++))
+do
+	read -p "Batch $i file name:" 
+	
+
+
